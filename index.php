@@ -64,7 +64,6 @@
         <script src="resource/js/price-range.js"></script>
         <script src="resource/js/jquery.prettyPhoto.js"></script>
         <script src="resource/js/main.js"></script>
-        a
     </body>
 
     </html>
