@@ -1,0 +1,10 @@
+#trangthai {
+    width: 11px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+#backgroundnone {
+    background: none;
+}
