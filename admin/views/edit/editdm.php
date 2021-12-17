@@ -14,8 +14,8 @@
                         <form action="#">
                         <input type="hidden" name="controller" value="homeadmin" />
                             <input type="hidden" name="action" value="updatedm" />
-                                <span>Mã loại nhạc cụ : </span><input type="text" placeholder="Mã loại nhạc cụ..." name="maloai" value="<?php echo $data['MaLoaiNhacCu'] ?>" readonly="false" />
-                                <span>Tên loại nhạc cụ : </span><input type="text" placeholder="Tên loại nhạc cụ..." name="tenloai" value="<?php echo $data['TenLoaiNhacCu'] ?>" />
+                                <span>Mã loại nhạc cụ : </span><input type="text" placeholder="Mã loại nhạc cụ..." name="maloaiud" value="<?php echo $data['MaLoaiNhacCu'] ?>" readonly="false" />
+                                <span>Tên loại nhạc cụ : </span><input type="text" placeholder="Tên loại nhạc cụ..." name="tenloaiud" value="<?php echo $data['TenLoaiNhacCu'] ?>" />
                             <button type="submit" class="btn btn-default">Lưu</button>
                         </form>
                     </div>

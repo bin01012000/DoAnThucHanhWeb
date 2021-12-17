@@ -29,6 +29,7 @@
                             <p><b>Condition:</b> New</p>
                             <p><b>Brand:</b> NhacCuBin</p>
                             <a href=""><img src="./images/product-details/share.png" class="share img-responsive" alt="" /></a>
+                            <a href="index.php?controller=cart&action=themgiohang&manc=<?php echo $data['MaNhacCu'] ?>&value=Add"" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
                         </div>
                     </div>
 
@@ -55,7 +56,7 @@
                                                     <a href="index.php?controller=product&action=details&manc=<?php echo $v['MaNhacCu'] ?>">
                                                         <p><?php echo $v['TenNhacCu'] ?></p>
                                                     </a>
-                                                    <a href="${param1}?action=themvao&manc=${ncLVDC.manc}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                                                    <a href="index.php?controller=cart&action=themgiohang&manc=<?php echo $v['MaNhacCu'] ?>&value=Add"" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
                                                 </div>
 
                                             </div>
@@ -80,7 +81,7 @@
                                                     <a href="index.php?controller=product&action=details&manc=<?php echo $v['MaNhacCu'] ?>">
                                                         <p><?php echo $v['TenNhacCu'] ?></p>
                                                     </a>
-                                                    <a href="${param1}?action=themvao&manc=${ncLVDC.manc}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                                                    <a href="index.php?controller=cart&action=themgiohang&manc=<?php echo $v['MaNhacCu'] ?>&value=Add"" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
                                                 </div>
 
                                             </div>

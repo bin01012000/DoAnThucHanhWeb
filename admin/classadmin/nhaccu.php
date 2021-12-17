@@ -1,6 +1,6 @@
 <?php 
 if (!defined('HOST')) exit;
-class nhaccu extends db
+class nhaccu extends dbadmin
 {
 
     function getAll()
@@ -57,13 +57,6 @@ class nhaccu extends db
         return $this->selectQuery($sql, $arr);
     }
 
-    function countLoai($maloai)
-    {
-        $sql ="select * from nhaccu where maloainhaccu = ?";
-        $arr =[$maloai];
-        return $this->updateQuery($sql, $arr);
-    }
-
     function getDanhSach()
     {
         return $this->selectQuery('select * from danhsach');
@@ -89,6 +82,11 @@ class nhaccu extends db
         return $this->selectQuery('select * from sanphamdecap order by rand() limit 0, 3');
     }
     
-
+function countLoai($id)
+    {
+        $sql ="select * from nhaccu where maloainhaccu = ?";
+        $arr =[$id];
+        return $this->updateQuery($sql, $arr);
+    }
 
 }

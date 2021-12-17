@@ -1,6 +1,7 @@
 <?php
 $action = utilities::get('action', 'index');
 $user = new users();
+$msg = " ";
 if ($action == 'index') {
     if (isset($_SESSION['user'])) {
 ?>
@@ -48,6 +49,7 @@ if ($action == 'signup') {
     $ht = utilities::get('hoten');
     $sdt = utilities::get('sdt');
     $email = utilities::get('email');
+    $token = rand(20000, 80000);
     if ($u == '' || $p == '' || $ht == '' || $sdt == '' || $email == '') {
         ?>
         <script>
@@ -64,32 +66,74 @@ if ($action == 'signup') {
             </script>
             <?php
         } else {
-            if ($sdt < 0) {
+            if ($user->checkTonTaiEmail($email) == false) {
             ?>
                 <script>
-                    alert('Số điện thoại không đúng');
+                    alert('Email đã được đăng ký');
                     window.location = 'index.php?controller=login';
                 </script>
                 <?php
             } else {
-                $n = $user->insertUser($u, $p, $ht, $sdt, $email);
-                if ($n > 0) {
+                if ($sdt < 0) {
                 ?>
                     <script>
-                        alert('Đăng ký thành công');
+                        alert('Số điện thoại không đúng');
                         window.location = 'index.php?controller=login';
                     </script>
-        <?php
+            <?php
+                } else {
+                    $user->goiMail($email, $token);
+                    include './views/login/confirm.php';
                 }
             }
         }
     }
 }
 
+if ($action == 'confirm') {
+    $u = utilities::get('usernamesu');
+    $p = utilities::get('passwordsu');
+    $ht = utilities::get('hoten');
+    $sdt = utilities::get('sdt');
+    $email = utilities::get('email');
+    $token = utilities::get('token');
+    $code = utilities::get('code');
+    if ($code == $token) {
+        $n = $user->insertUser($u, $p, $ht, $sdt, $email);
+        if ($n > 0) {
+            ?>
+            <script>
+                alert('Đăng ký thành công');
+                window.location = 'index.php?controller=login';
+            </script>
+        <?php
+        }
+    }else{
+        ?>
+            <script>
+                alert('Mã xác nhận không chính xác');
+                window.history.back();
+            </script>
+        <?php
+    }
+}
+
+if ($action == 'test') {
+    $n = $user->insertUser($u, $p, $ht, $sdt, $email);
+    if ($n > 0) {
+        ?>
+        <script>
+            alert('Đăng ký thành công');
+            window.location = 'index.php?controller=login';
+        </script>
+    <?php
+    }
+}
+
 if ($action == 'logout') {
     if (isset($_SESSION['user'])) {
         unset($_SESSION['user']);
-        ?>
+    ?>
         <script>
             alert('Đã đăng xuất');
             window.location = 'index.php?controller=login';

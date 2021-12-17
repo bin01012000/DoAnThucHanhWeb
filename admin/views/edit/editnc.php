@@ -31,7 +31,8 @@
                                 }
                                 ?>
                             </select>
-                            <span>Hình ảnh : </span><input type="file" id="backgroundnone" name="hinhud" value="<?php echo $data['HinhAnh'] ?>"/>
+                            <input type="hidden" name="hinh" value="<?php echo $data['HinhAnh'] ?>"/>
+                            <span>Hình ảnh : </span><input type="file" id="backgroundnone" name="hinhud"/>
                             <button type="submit" class="btn btn-default">Lưu</button>
                         </form>
                     </div>

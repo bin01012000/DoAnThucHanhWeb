@@ -1,6 +1,6 @@
 <?php 
 if (!defined('HOST')) exit;
-class danhsach extends db
+class danhsach extends dbadmin
 {
     function getAllDS()
     {
@@ -36,5 +36,11 @@ class danhsach extends db
             return false;
         }
         return true;
+    }
+    function countLoai($maloai)
+    {
+        $sql ="select * from nhaccu where maloainhaccu = ?";
+        $arr =[$maloai];
+        return $this->updateQuery($sql, $arr);
     }
 }

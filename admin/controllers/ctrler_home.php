@@ -141,8 +141,8 @@ if ($action == 'xoanc') {
 
 if ($action == 'xoadm') {
     $id = utilities::get('maloai');
-    $n = $danhsach->delete($id);
-    $a = $nhaccu->countLoai($id);
+    
+    $a = $danhsach->countLoai($id);
     if ($a > 0) {
     ?>
         <script>
@@ -151,6 +151,7 @@ if ($action == 'xoadm') {
         </script>
         <?php
     } else {
+        $n = $danhsach->delete($id);
         if ($n > 0) {
         ?>
             <script>
@@ -187,11 +188,15 @@ if ($action == 'updatenc') {
         $ttnc = 0;
     }
     $ml = utilities::post('maloaincud');
+    $oldhinh = utilities::post('hinh');
     $hinh = utilities::post('hinhud');
     if (isset($_FILES['hinhud'])) {
         if ($_FILES['hinhud']['error'] == 0) {
             $hinh = $_FILES['hinhud']['name'];
             move_uploaded_file($_FILES['hinhud']['tmp_name'], "../resource/images/nhaccu/$hinh");
+        }
+        else{
+            $hinh = $oldhinh;
         }
     }
     if ($tennc == '' || $gianc == '' || $ngaytaonc == '') {
@@ -211,7 +216,7 @@ if ($action == 'updatenc') {
             <?php
         } else {
             $n = $nhaccu->update($manc, $tennc, $gianc, $ngaytaonc, $ttnc, $ml, $hinh);
-            if ($n > 0) {
+            if ($n >= 0) {
             ?>
                 <script>
                     alert('Cập nhật thành công');
@@ -237,8 +242,8 @@ if ($action == 'editdm') {
 }
 
 if ($action == 'updatedm') {
-    $ml = utilities::get('maloai');
-    $tl = utilities::get('tenloai');
+    $ml = utilities::get('maloaiud');
+    $tl = utilities::get('tenloaiud');
     if ($tl == '') {
         ?>
         <script>
@@ -248,7 +253,7 @@ if ($action == 'updatedm') {
         <?php
     } else {
         $n = $danhsach->update($ml, $tl);
-        if ($n > 0) {
+        if ($n >= 0) {
         ?>
             <script>
                 alert('Cập nhật loại thành công');

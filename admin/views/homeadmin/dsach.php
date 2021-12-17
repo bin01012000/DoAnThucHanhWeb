@@ -34,7 +34,7 @@
                                         <a href="index.php?controller=homeadmin&action=editdm&maloai=<?php echo $v['MaLoaiNhacCu'] ?>">Edit</a>
                                     </td>
                                     <td class="action">
-                                        <a href="index.php?controller=homeadmin&action=xoadm&maloai=<?php echo $v['MaLoaiNhacCu'] ?>">Delete item</a>
+                                        <a href="index.php?controller=homeadmin&action=xoadm&maloai=<?php echo $v['MaLoaiNhacCu'] ?>" onclick="return confirm('Bạn có chắc chắn xóa ?');">Delete item</a>
                                     </td>
                                 </tr>
                             <?php
